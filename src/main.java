@@ -10,4 +10,7 @@ public class main {
     public void master_1() {
         System.out.println("22222222");
     }
+    public void master_2() {
+        System.out.println("2-2-2-2-2-2-2");
+    }
 }
