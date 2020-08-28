@@ -13,4 +13,8 @@ public class main {
     public void master_2() {
         System.out.println("2-2-2-2-2-2-2");
     }
+    public void master_3() {
+        System.out.println("3-3");
+    }
+
 }
