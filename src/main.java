@@ -16,5 +16,9 @@ public class main {
     public void master_3() {
         System.out.println("3-3-3");
     }
+    public void master_4() {
+        System.out.println("111111-4-4");
+    }
+
 
 }
