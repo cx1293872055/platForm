@@ -6,4 +6,8 @@ public class main {
     public static void main(String[] args) {
         System.out.println("1111");
     }
+
+    public void master_1() {
+        System.out.println("22222222");
+    }
 }
