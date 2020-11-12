@@ -1,31 +1,51 @@
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.MethodType;
 
-public class main {
+import static java.lang.invoke.MethodHandles.lookup;
+
+public class main{
+
     //
-    public static void main(String[] args) {
-        A temp = new A(new A(null, 3), 2);
-        test(temp);
+    public static void main(String[] args)   {
+        B b = new B(1);
+        b.think();
+
     }
-    public static void test(A temp) {
-        switch (temp.val) {
-            case 1:
-                System.out.println(temp.val);
-                temp = temp.next;
-            case 2:
-                System.out.println(temp.val);
-                temp = temp.next;
-            case 3:
-                System.out.println(temp.val);
+
+
+    static class C {
+        public void think() {
+            System.out.println("CCCCCCC");
         }
     }
 
-        static class A {
-            A next;
-            Integer val;
+    static class B extends C {
+        Integer val;
 
-            //   这是你的
-            public A(A next, Integer val) {
-                this.next = next;
-                this.val = val;
+        //   这是你的
+        public B(Integer val) {
+            this.val = val;
+        }
+
+        public void think() {
+            System.out.println("BBBBBBB");
+        }
+    }
+
+    static class A extends B {
+
+        public A(Integer val) {
+            super(val);
+        }
+
+        public void think() {
+            MethodType mt = MethodType.methodType(void.class);
+            try {
+                MethodHandle mh = lookup().findSpecial(C.class, "think", mt, getClass());
+                mh.invoke(this);
+            } catch (Throwable throwable) {
+                throwable.printStackTrace();
             }
         }
+    }
 }
